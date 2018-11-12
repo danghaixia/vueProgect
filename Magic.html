@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三阶魔方</title>
+	<style>
+		.aside{
+    width: 180px;　　　　　　
+    height: 180px;　　　　　　/* 这里定义每个面长宽都是180px */
+    position: absolute;　　  /* 设置绝对定位，方便后面控制每个面的位置*/
+    transform: translatez(0px);　　/*对这个面进行位置的移动*/
+}
+.aside div{
+    width: 54px;　　　
+    height: 54px;　　　　
+    border-radius: 4px;　　/*设置圆角才能看到格子与格子间的小孔*/
+    float: left;　　
+    border: 3px solid #000;　　/* 这里定义每个格子的边框是3px 所以一个格子总的长宽是54+3+3=60px 一行3个格子60*3=180px 一列同理 */
+    background: green;　　/*上色*/
+}
+/*向X轴正方向平移80px长度、向Y轴负方向平移80PX、向Z轴正方向平移90px*/
+transform: translatex(80px)  translatey(-80px) translatez(90px);
+/*向X轴顺时针转动30度（℃）、向Y轴顺时针转动45度、向Z轴逆时针转动90度*/
+transform:rotatex(30deg) rotatey(45deg) rotatez(-90deg);
+
+.box{
+    animation: cube_animation ease-in-out 6s infinite forwards;  /*魔方动画设置*/
+    transform-style: preserve-3d;　　/*3d渲染*/
+    transform-origin: 90px 90px 90px;
+}
+/*魔方动画效果*/<br>@keyframes cube_animation{<br>    from,to{}<br>    16%{<br>        transform: rotatey(-90deg);<br>    }<br>    33%{<br>        transform: rotatey(-90deg) rotatez(135deg);<br>    }<br>    50%{<br>        transform: rotatey(225deg) rotatez(135deg);<br>    }<br>    66%{<br>        transform: rotatey(135deg) rotatex(135deg);<br>    }<br>    83%{<br>        transform: rotatex(135deg);<br>    }<br>}
+/*魔方六面*/
+.aside{
+    width: 180px;
+    height: 180px;
+    position: absolute;
+ 
+}
+ 
+.bside{
+    width: 180px;
+    height: 180px;
+    position: absolute;<br>　　/*魔方的B面，先向左平移90px,再靠近人脸90px,最后y轴顺时针90度*/
+    transform: translatex(-90px) translatez(90px) rotatey(90deg);
+}
+ 
+.cside{
+    width: 180px;
+    height: 180px;
+    position: absolute;<br>
+    transform: translatez(90px) translatey(90px) rotatex(90deg);
+}
+ 
+.dside{
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    transform: translatez(180px);
+}
+ 
+.eside{
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    transform: translatez(90px) translatey(-90px) rotatex(90deg);
+}
+	</style>
+</head>
+<body>
+	<!-- 魔方六面 -->
+<div class="box">
+    <div class="aside"> <!--魔方第一个面，类名aside-->
+        <div></div>　　<!--第一个面里的每一个小格子-->
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    ...<!--魔方另外五个面代码和第一个面一样，此处省略-->
+</div>
+</body>
+</html>
